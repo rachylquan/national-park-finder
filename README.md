@@ -1,5 +1,5 @@
 # national-park-finder
-
+View project: https://rachylquan.github.io/national-park-finder/
 <h2>Assignment</h2>
 <p>Your team is working on an app that will help folks plan a vacation. You've been assigned to work on one feature for the app - to display a list of national parks in an area.</p>
 <ul>
