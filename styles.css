@@ -113,11 +113,15 @@ a:hover {
     display: flex;
     flex-direction: row;
     margin-bottom: 20px;
-    justify-content: space-between
+    justify-content: flex-start;
   }
   
   .form-sec {
     width: 40%;
+  }
+
+  div.form-sec:nth-child(2) {
+    margin-left: 30px;
   }
   
   select, option {
@@ -131,11 +135,7 @@ a:hover {
   }
   
   input {
-    padding: 5px;
-    border: 1px solid lightgrey;
-    display: block;
     width: 100%;
-    margin-top: 5px;
   }
   
   
