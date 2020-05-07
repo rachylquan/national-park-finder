@@ -38,18 +38,6 @@ function displayResults(data) {
         <a href="${data[i].url}" target="_blank">Learn More</a>
       </li>`
     );
-
-    if (data[i].addresses[0].line2 !== "") {
-      $('.line1').append(`
-        <br>${data[i].addresses[0].line2}
-      `)
-    };
-
-    if (data[i].addresses[0].line3 !== "") {
-      $('.line1').append(`
-        <br>${data[i].addresses[0].line3}
-      `)
-    };
   };
 
   $('.results-container').removeClass('hidden');
