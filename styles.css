@@ -1,0 +1,146 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  line-height: 1.5;
+  color: #444444;
+}
+
+h1, h2, h3, h4, h5, label {
+  color: black;
+}
+
+header {
+  padding: 30px;
+  border-bottom: 1px solid lightgray;
+}
+
+.form-sec {
+  width: 100%;
+  padding-top: 10px;
+}
+
+select, option {
+  display: block;
+  width: 100%;
+  margin-top: 5px;
+}
+
+select:focus {
+  outline: none;
+}
+
+input {
+  padding: 5px;
+  border: 1px solid lightgrey;
+  display: block;
+  width: 100%;
+  margin-top: 5px;
+}
+
+input[type="number"]:focus, option:focus {
+  border-bottom: 2px solid #444444;
+  outline: none;
+  display: block;
+}
+
+input[type = "submit"] {
+  border: 1px solid lightgrey;
+  padding: 5px 10px;
+  transition: all .3s ease-in-out;
+  cursor: pointer;
+  width: 100%;
+}
+
+input[type = "submit"]:hover, input[type = "submit"]:focus {
+  border: 1px solid lightgrey;
+  padding: 5px 10px;
+  background-color: #444444;
+  color: white;
+  outline: none;
+}
+
+section, main {
+  padding: 15px 30px;
+}
+
+#results-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+li {
+  padding: 10px 20px;
+  border: 1px solid lightgray;
+  margin-bottom: 10px;
+  border-radius: 3px;
+}
+
+.park-title {
+  position: relative;
+}
+
+.park-title::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 50px;
+  height: 1px;
+  background-color: black;
+}
+
+a:hover {
+  color: black;
+}
+
+.hidden {
+  display: none;
+}
+
+/* media queries */
+
+@media screen and (min-width:480px) {
+  form {
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+  }
+  
+  .form-row {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+    justify-content: space-between
+  }
+  
+  .form-sec {
+    width: 40%;
+  }
+  
+  select, option {
+    display: block;
+    width: 100%;
+    margin-top: 5px;
+  }
+  
+  select:focus {
+    outline: none;
+  }
+  
+  input {
+    padding: 5px;
+    border: 1px solid lightgrey;
+    display: block;
+    width: 100%;
+    margin-top: 5px;
+  }
+  
+  
+  input[type = "submit"] {
+    width: 40%;
+  }
+  
+}
