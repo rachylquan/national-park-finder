@@ -9,23 +9,49 @@ function formatQueryParams(params) {
   return queryItems.join('&');
 }
 
-function displayResults(responseJson) {
+function displayResults(data) {
   // empty the results
-  console.log(responseJson);
   $('#results-list').empty();
 
-  for (let i = 0; i < responseJson.data.length; i++) {
+  // loop through parks
+  const parks = data.map(park => {
+    park.addresses = park.addresses.filter(address => {
+      return address.type === "Physical";
+    })
+    return park;
+  });
+
+  console.log(parks);
+    // get addresses
+
+    // filter addresses for type is physical
+
+    // update park with filtered address
+
+  for (let i = 0; i < data.length; i++) {
     $('#results-list').append(
       `<li>
-        <h3 class="park-title">${responseJson.data[i].fullName}</h3>
-        <p>${responseJson.data[i].description}</p>
-        <a href="${responseJson.data[i].url}" target="_blank">Learn More</a>
+        <h3 class="park-title">${data[i].fullName}</h3>
+        <address><span class="line1">${data[i].addresses[0].line1}<span>
+        <br>${data[i].addresses[0].city}, ${data[i].addresses[0].stateCode} ${data[i].addresses[0].postalCode}</address>
+        <p>${data[i].description}</p>
+        <a href="${data[i].url}" target="_blank">Learn More</a>
       </li>`
     );
+
+    if (data[i].addresses[0].line2 !== "") {
+      $('.line1').append(`
+        <br>${data[i].addresses[0].line2}
+      `)
+    };
+
+    if (data[i].addresses[0].line3 !== "") {
+      $('.line1').append(`
+        <br>${data[i].addresses[0].line3}
+      `)
+    };
   };
 
-  
-    
   $('.results-container').removeClass('hidden');
 };
 
@@ -50,7 +76,7 @@ function getNationalParks(state, maxResults=10) {
       $('#js-error-message').empty();
       throw new Error(response.statusText);
     })
-    .then(responseJson => displayResults(responseJson))
+    .then(responseJson => displayResults(responseJson.data))
     .catch(err => {
       $('#js-error-message').text(`Something went wrong: ${err.message}`);
     })
