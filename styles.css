@@ -12,6 +12,10 @@ h1, h2, h3, h4, h5, label {
   color: black;
 }
 
+.error-container {
+  color: red;
+}
+
 header {
   padding: 30px;
   border-bottom: 1px solid lightgray;

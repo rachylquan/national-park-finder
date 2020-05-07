@@ -22,24 +22,21 @@ function displayResults(data) {
   });
 
   console.log(parks);
-    // get addresses
-
-    // filter addresses for type is physical
-
-    // update park with filtered address
 
   for (let i = 0; i < data.length; i++) {
     $('#results-list').append(
       `<li>
         <h3 class="park-title">${data[i].fullName}</h3>
-        <address><span class="line1">${data[i].addresses[0].line1}<span>
-        <br>${data[i].addresses[0].city}, ${data[i].addresses[0].stateCode} ${data[i].addresses[0].postalCode}</address>
+        <address>
+          ${data[i].addresses[0].line1}
+          <br>${data[i].addresses[0].city}, ${data[i].addresses[0].stateCode} ${data[i].addresses[0].postalCode}
+        </address>
         <p>${data[i].description}</p>
         <a href="${data[i].url}" target="_blank">Learn More</a>
       </li>`
     );
-  };
-
+  }
+  $('.error-container').addClass('hidden');
   $('.results-container').removeClass('hidden');
 };
 
@@ -58,16 +55,19 @@ function getNationalParks(state, maxResults=10) {
     .then(response => {
       if (response.ok) {
         return response.json();
+      } 
+      else {
+        throw new Error(response.statusText);
       }
-      $('.results-container').addClass('hidden');
-      $('.error-container').removeClass('hidden');
-      $('#js-error-message').empty();
-      throw new Error(response.statusText);
+      
     })
     .then(responseJson => displayResults(responseJson.data))
     .catch(err => {
+      $('.results-container').addClass('hidden');
+        $('.error-container').removeClass('hidden');
+        $('#js-error-message').empty();
       $('#js-error-message').text(`Something went wrong: ${err.message}`);
-    })
+  });
 }
 
 function watchForm() {
